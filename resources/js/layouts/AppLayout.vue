@@ -13,12 +13,12 @@
             <v-list-item-title>Home</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
-        <v-list-item link>
+        <v-list-item @click="goto">
           <v-list-item-action>
             <v-icon>mdi-email</v-icon>
           </v-list-item-action>
           <v-list-item-content>
-            <v-list-item-title>Contact</v-list-item-title>
+            <v-list-item-title>Labs</v-list-item-title>
           </v-list-item-content>
         </v-list-item>
       </v-list>
@@ -65,5 +65,19 @@
     data: () => ({
       drawer: null,
     }),
+    methods: {
+      goto() {
+        if(this.$auth.user().role_id === 1)
+        {
+          this.$router.push('/admin/labs');
+        }
+        if(this.$auth.user().role_id === 2)
+        {
+          this.$router.push('/labs');
+        }
+
+        
+   },
+ }
   }
 </script>

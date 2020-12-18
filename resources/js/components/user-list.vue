@@ -10,13 +10,15 @@
         <th scope="col">Id</th>
         <th scope="col">Nom</th>
         <th scope="col">Email</th>
-        <th scope="col">Date d'inscription</th>
+        <th scope="col">Role</th>
+        <th scope="col">Date</th>
       </tr>
       <tr v-for="user in users" v-bind:key="user.id" style="margin-bottom: 5px;">
         <th scope="row">{{ user.id }}</th>
         <td>{{ user.name }}</td>
         <td>{{ user.email }}</td>
-        <td>{{ user.created_at}}</td>
+        <td><span v-if="user.role_id==1">Admin</span><span v-if="user.role_id==2">User</span></td>
+        <td>{{ user.created_at }}</td>
 
       </tr>
     </table>
@@ -44,7 +46,7 @@
           method: 'GET'
         })
           .then((res) => {
-            this.users = res.data.users
+            this.users = res.data
           }, () => {
             this.has_error = true
           })

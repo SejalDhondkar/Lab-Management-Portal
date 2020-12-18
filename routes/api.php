@@ -31,4 +31,17 @@ Route::group(['middleware' => 'auth:api'], function(){
     Route::post('roles/store',['uses'=>'RoleController@store','as'=>'roles.store']);
     Route::get('roles/{id}/edit',['uses'=>'RoleController@edit','as'=>'roles.edit']);
     Route::put('roles/{id}/update',['uses'=>'RoleController@update','as'=>'roles.update']);
+
+    // Labs
+    Route::get('/admin/labs', 'LabController@index');
+    Route::post('/admin/lab/store', 'LabController@store');
+    Route::get('/admin/lab/{id}/edit','LabController@edit');
+    Route::put('/admin/lab/{id}/update','LabController@update');
+
+    // Equipments
+    Route::get('/admin/lab/{id}/equipments', 'EquipmentController@index');
+    Route::post('/admin/lab/{id}/equipment/store', 'EquipmentController@store');
+    Route::get('/admin/equipment/{id}/edit','EquipmentController@edit');
+    Route::put('/admin/equipment/{id}/update','EquipmentController@update');
+
 });

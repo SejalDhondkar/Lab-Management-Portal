@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div class="card card-default">
-      <div class="card-header">Connexion</div>
+      <div class="card-header">Login</div>
 
       <div class="card-body">
         <div class="alert alert-danger" v-if="has_error">
@@ -13,10 +13,10 @@
             <input type="email" id="email" class="form-control" placeholder="user@example.com" v-model="email" required>
           </div>
           <div class="form-group">
-            <label for="password">Mot de passe</label>
+            <label for="password">Password</label>
             <input type="password" id="password" class="form-control" v-model="password" required>
           </div>
-          <button type="submit" class="btn btn-default">Connexion</button>
+          <button type="submit" class="btn btn-default">Login</button>
         </form>
       </div>
     </div>
@@ -52,7 +52,7 @@
           },
           success: function() {
             // handle redirection
-            const redirectTo = redirect ? redirect.from.name : this.$auth.user().role === 2 ? 'admin.dashboard' : 'dashboard'
+            const redirectTo = redirect ? redirect.from.name : this.$auth.user().role_id === 1 ? 'admin.dashboard' : 'dashboard'
 
             this.$router.push({name: redirectTo})
           },
